@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2021 at 06:54 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Dec 21, 2022 at 06:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -39,8 +40,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `is_active`) VALUES
-(5, 'Bruno', 'brunoadmin@gmail.com', '$2y$10$qZ0OoyX8bhAVxDFM/fx8leZSZwlyq15c1C/KTnaqDLSx6eCDJ0VpC', '0'),
-(8, 'Harry Den', 'harryden@gmail.com', '$2y$10$YKSDtra7v2wH6ORYfry8Ue9t49pk1AvQvdJGuq4lDvFLEcx.kP6Mq', '0');
+(10, 'pro', 'pro@gmail.com', '$2y$10$NsqAOLvAMawVyZOn.BsuxuWIYEY0xSctPQF2IvapHlMH/.dmM2FXS', '0'),
+(11, 'jjk', 'jjk@gmail.com', '$2y$10$bT3tAUMoU9qgIjRG.jq/pOsQI3hVtVoDtL8UMkLt450gaFlWERgIu', '0'),
+(16, 'prio', 'prio@gmail.com', '$2y$10$WbTBHR3Yyldy4MMU2BuAtOy67ajiCoU/FPiO9nZ5f0HV100dLmeH6', '0');
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,7 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 (7, 'Excl'),
 (8, 'Aduro'),
 (9, 'Dr. Martens'),
-(10, 'Hot Toys');
+(13, 'A4 Tech');
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,17 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`) VALUES
-(1, 4, '::1', 4, 1);
+(1, 4, '::1', 4, 1),
+(2, 1, '::1', 7, 1),
+(3, 2, '::1', 7, 1),
+(7, 4, '127.0.0.1', 8, 1),
+(8, 2, '127.0.0.1', 8, 1),
+(16, 1, '127.0.0.1', 9, 1),
+(17, 10, '127.0.0.1', 9, 1),
+(18, 1, '127.0.0.1', 10, 1),
+(19, 10, '127.0.0.1', 10, 1),
+(20, 1, '127.0.0.1', 11, 1),
+(21, 10, '127.0.0.1', 11, 1);
 
 -- --------------------------------------------------------
 
@@ -109,11 +121,11 @@ INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 (2, 'Electronics'),
 (3, 'Home & Kitchen'),
 (4, 'Tools & Home Improvement'),
-(5, 'CDs & Vinyl'),
 (6, 'Clothings'),
 (12, 'Mobiles'),
 (13, 'Automotive Parts & Accessories'),
-(14, 'Toys');
+(14, 'Toys'),
+(17, 'Gaming Chair');
 
 -- --------------------------------------------------------
 
@@ -164,13 +176,11 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_qty`, `product_desc`, `product_image`, `product_keywords`) VALUES
 (1, 12, 2, 'Samsung Galaxy Z Fold 2', 249999, 5, 'Last yearâ€™s Galaxy Fold was a sort of experiment in the field of foldable phones. The idea was an innovative one but the phone faced a lot of durability issues. Its launch was postponed multiple times because of Samsungâ€™s inability to solve all the problems. Samsung will likely avoid those situations with its successor.', '1616500092_sm-zfold.jpg', 'samsung, mobile, galaxy fold'),
-(2, 12, 3, 'Iphone 12 Pro Max', 187000, 7, '5G goes Pro. A14 Bionic rockets past every other smartphone chip. The Pro camera system takes low-light photography to the next level â€” with an even bigger jump on iPhone 12 Pro Max. And Ceramic Shield delivers four times better drop performance.', '1616499931_iph12pm.jpg', 'apple, iphone'),
-(4, 12, 2, 'Samsung Galaxy S21 Ultra', 155000, 10, 'This is a demo', '1616492395_Samsung-Galaxy-S21-Ultra-1608287647-0-0.jpg', 'samsung, s21, s21 ultra'),
-(5, 12, 6, 'OnePlus 8T', 86000, 13, 'On spec-sheet, the OnePlus 8T boasts plenty of improvements from its predecessor i.e. the OnePlus 8. For instance, its 6.55-inch 1080p OLED display now comes with a faster 120Hz refresh rate. In comparison, the OnePlus 8 had a 90Hz refresh rate. This upgrade seems huge. However, users will agree that you canâ€™t really find much of a difference between 90Hz to 120Hz on a smartphone screen.', '1616500410_OnePlus-8T-5G-Lunar-Silver-8GB-RAM-128GB-Storage-image-4.jpg', 'one plus, oneplus8'),
 (10, 2, 8, 'Aduro Wireless Headphones', 4100, 6, 'Amazing Bluetooth headphones sound with aptX technology. High-quality built-in microphone with Bluetooth 5.0 technology', '1616502854_hdphn.jpg', 'headphone, aduro'),
 (11, 6, 9, 'Dr. Martens Mens Patch', 16000, 3, 'Color: Grey/Charcoal/Dark Grey', '1616503181_Dr. Martens.jpg', 'dr martens, shoes'),
 (19, 6, 7, 'Mens Hoodie', 3500, 4, 'Colors: Black/White/Maroon', '1616504885_menshoodie.jpg', 'hood, hoodie'),
-(20, 14, 10, 'Thanos Hot Toys', 8150, 19, 'Thanos sixth scale collectible figure.', '1616506942_thanos-hottoys.jpg', 'thanos, marvel, toys, hot toys');
+(22, 17, 13, 'Gaming Chair', 16000, 2, 'Comfor to sit and enjoy game', '1671009102_1671008642_a4.jpg', 'Brand New'),
+(23, 12, 3, 'Iphone 14 pro max', 200000, 3, 'Iphone 14 Pro Max', '1671009198_i14.png', 'Brand New');
 
 -- --------------------------------------------------------
 
@@ -198,7 +208,9 @@ INSERT INTO `user_info` (`user_id`, `first_name`, `last_name`, `email`, `passwor
 (2, 'Will', 'Willams', 'willainswill@gmail.com', '25f9e794323b453885f5181f1b624d0b', '8389080183', '4567  Orphan Road', 'WI'),
 (3, 'Demo', 'Name', 'demo@gmail.com', 'password', '9876543210', 'demo ad1', 'ademo ad2'),
 (5, 'Steeve', 'Rogers', 'steeve1@gmail.com', '305e4f55ce823e111a46a9d500bcb86c', '9876547770', '573  Pinewood Avenue', 'MN'),
-(6, 'Melissa', 'Gilbert', 'gilbert@gmail.com', '305e4f55ce823e111a46a9d500bcb86c', '7845554582', '1711  McKinley Avenue', 'MA');
+(6, 'Melissa', 'Gilbert', 'gilbert@gmail.com', '305e4f55ce823e111a46a9d500bcb86c', '7845554582', '1711  McKinley Avenue', 'MA'),
+(10, 'a', 'b', 'a@gmail.com', '5968c579c1a562b24ce89f11e6af75f8', '1234567890', 'Dhaka', 'Dhaka'),
+(11, 'Prionto', 'Choudhury', 'prionto0216@gmail.com', '5968c579c1a562b24ce89f11e6af75f8', '1234567890', 'Dhaka', 'Dhaka');
 
 --
 -- Indexes for dumped tables
@@ -257,37 +269,44 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `brand_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cat_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- Constraints for dumped tables
 --
@@ -298,6 +317,7 @@ ALTER TABLE `user_info`
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_product_brand` FOREIGN KEY (`product_brand`) REFERENCES `brands` (`brand_id`),
   ADD CONSTRAINT `fk_product_cat` FOREIGN KEY (`product_cat`) REFERENCES `categories` (`cat_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
